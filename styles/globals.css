@@ -1,9 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500&display=swap');
+
+:root {
+  /* *** Primary Colors *** */
+  --Main-Green: #5AB553;
+  --Main-White: #F4F4F4;
+  --Background-Color: #181818;
+  --Background-Color-Darker: #0A0A0A;
+
+  /* ** Secondary Colors ** */
+  --Bitcoin: #F7931A;
+  --Ethereum: #F4F4F4;
+  --Monero: #FF6600;
+
+  /* 1rem = 10x */
+  font-size: 62.5%;
+}
+
 html,
 body {
-  padding: 0;
+  font-family: 'Saira Condensed',
+    sans-serif;
+  background-color: var(--Background-Color);
+  color: var(--Main-White);
+}
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
@@ -11,6 +35,13 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+li {
+  list-style: none;
+}
+
+button {
+  font-family: 'Saira Condensed',
+    sans-serif;
+  border: none;
+  cursor: pointer;
 }
