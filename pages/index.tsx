@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 
 import { FiMenu } from 'react-icons/fi';
 import { IoCloseSharp } from 'react-icons/io5';
+import { FaBitcoin, FaEthereum, FaMonero } from 'react-icons/fa';
 
 export default function Home() {
 
@@ -87,6 +88,25 @@ export default function Home() {
 
         {/* *** "Choose your Crypto" *** */}
         <h2 className={styles.divHeaderTitle}>Choose your Crypto</h2>
+
+        <div className={styles.chooseCryptoContainer}>
+          <div className={styles.cryptoBox}>
+            <h3>Bitcoin</h3>
+            <p>(BTC)</p>
+            <FaBitcoin fill={'var(--Bitcoin)'} size={120} />
+          </div>
+          <div className={styles.cryptoBox}>
+            <h3>Ethereum</h3>
+            <p>(ETH)</p>
+            <FaEthereum fill={'var(--Ethereum)'} size={120} />
+          </div>
+          <div className={styles.cryptoBox}>
+            <h3>Monero</h3>
+            <p>(XMR)</p>
+            <FaMonero fill={'var(--Monero)'} size={120} />
+          </div>
+          <h3>And many more...</h3>
+        </div>
 
       </main>
     </div>

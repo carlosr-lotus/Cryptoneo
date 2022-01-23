@@ -255,6 +255,45 @@
 
 /* *** "Choose your Crypto" *** */
 .divHeaderTitle {
+  /* margin-bottom: 10rem; */
   font-size: 3rem;
   font-weight: 400;
+}
+
+.chooseCryptoContainer h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.cryptoBox {
+  position: relative;
+  width: 18rem;
+  height: 20rem;
+  margin: 8rem auto;
+  padding-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 1rem;
+  border: 1px solid var(--CryptoBox-border);
+}
+
+.cryptoBox h3,
+.cryptoBox p {
+  font-weight: 400;
+}
+
+.cryptoBox h3 {
+  font-size: 3rem;
+}
+
+.cryptoBox p {
+  font-size: 2.4rem;
+}
+
+.cryptoBox svg {
+  position: absolute;
+  bottom: -30px;
 }
