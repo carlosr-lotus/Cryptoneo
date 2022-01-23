@@ -3,11 +3,12 @@
 } */
 
 .headerContainer {
-  padding: 3.5rem 3rem;
+  padding: 3.5rem 0rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  width: 100%;
+  width: 90%;
+  margin: 0 auto 5rem;
 }
 
 .headerContainer>.mobileMenuIcon {
@@ -97,7 +98,7 @@
   display: none;
 }
 
-/* *** Responsive CSS media *** */
+/* *** Responsive CSS media -> Header *** */
 
 /* iPads/Tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -107,21 +108,14 @@
 
     grid-template-columns: .5fr .5fr;
   }
-
-  .loginButton {
-    grid-row: 1;
-    grid-column: 3;
-  }
-
-  /* Removes Mobile Menu Icon */
 }
 
 @media (min-width: 1024px) {
   .headerContainer {
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 10rem;
 
-    grid-template-columns: 150px 300px 1fr;
+    grid-template-columns: 150px 400px 1fr;
   }
 
   .navbarDesktop {
@@ -143,4 +137,124 @@
   .mobileMenuIcon {
     display: none;
   }
+}
+
+/* Desktop Screensize */
+@media (min-width: 1440px) and (max-width: 2560px) {
+  .headerContainer {
+    width: 80%;
+    margin: 0 auto 10rem;
+  }
+}
+
+/* Widescreen/4k */
+@media (min-width: 2560px) {
+  .headerContainer {
+    width: 75%;
+    margin: 0 auto 10rem;
+  }
+}
+
+/* !!! */
+/* ***** Index Page Main Content ***** */
+/* !!! */
+.mainTag {
+  width: 100%;
+  margin: 0rem auto;
+
+  text-align: center;
+}
+
+.getStartedContainer {
+  margin-bottom: 15rem;
+}
+
+.getStartedContent>h1 {
+  margin: 0 auto 2.5rem;
+
+  max-width: 28.5rem;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.getStartedBtn {
+  padding: 1rem 5rem;
+  margin-bottom: 7rem;
+
+  border-radius: .7rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+
+  background-color: var(--Main-Green);
+  color: var(--Main-White);
+}
+
+/* *** Responsive CSS media -> Main *** */
+
+/* iPads/Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .headerContainer {
+    width: 90%;
+    margin: 0 auto 5rem;
+
+    grid-template-columns: .5fr .5fr;
+  }
+
+  .getStartedContent>h1 {
+    /* width: 0; */
+    margin: 0 auto 2.5rem;
+  }
+
+  .pickaxeSvg {
+    width: 60%;
+  }
+}
+
+/* Small/Laptops */
+@media (min-width: 1024px) {
+  .getStartedContainer {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .getStartedContent {
+    max-width: 50rem;
+    text-align: left;
+  }
+
+  .getStartedContent>h1 {
+    max-width: 50rem;
+    font-size: 4rem;
+  }
+
+  .pickaxeSvg {
+    width: 32rem;
+  }
+}
+
+/* Desktop Screensizes */
+@media (min-width: 1440px) and (max-width: 2560px) {
+  .getStartedContainer {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 2560px) {
+  .getStartedContainer {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+/* *** "Choose your Crypto" *** */
+.divHeaderTitle {
+  font-size: 3rem;
+  font-weight: 400;
 }
