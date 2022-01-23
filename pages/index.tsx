@@ -17,30 +17,48 @@ export default function Home() {
         <title>Cryptoneo | Home</title>
       </Head>
 
-      <nav className={mobileMenu ? styles.headerContainerMobile : styles.headerContainer}>
-        <h1 className={styles.headerLogo}>Cryptoneo</h1>
+      {/* *** Index Page Header *** */}
+      <header>
+        <nav
+          className={mobileMenu ? styles.headerContainerMobile : styles.headerContainer}>
+          <h1 className={styles.headerLogo}>Cryptoneo</h1>
 
-        <div className={styles.mobileMenuIcon} onClick={() => setMobileMenu(!mobileMenu)}>
-          {mobileMenu ? <IoCloseSharp size={30} /> : <FiMenu size={25} />}
-        </div>
+          {/* Menu Icon only on Mobile */}
+          <div className={styles.mobileMenuIcon} onClick={() => setMobileMenu(!mobileMenu)}>
+            {mobileMenu ? <IoCloseSharp size={30} /> : <FiMenu size={25} />}
+          </div>
 
-        {/* Mobile Menu Display */}
-        {mobileMenu ?
-          <>
-            <ul>
-              <li><a href="/about">Home</a></li>
-              <li>Mining</li>
-              <li>About</li>
-            </ul>
+          {/* Mobile Menu Display on menu icon click */}
+          {mobileMenu ?
+            <>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li>Mining</li>
+                <li>About</li>
+              </ul>
 
-            <button className={styles.loginButton}>Login</button>
-          </>
-          :
-          ''
-        }
-      </nav>
+              <button className={styles.loginButton}>Login</button>
+            </>
+            :
+            ''
+          }
 
-      <h2 className={styles.teste}>apenas um teste</h2>
+          {/* Desktop Menu Display */}
+          <ul className={styles.navbarDesktop}>
+            <li><a href="/">Home</a></li>
+            <li>Mining</li>
+            <li>About</li>
+          </ul>
+
+          <button className={styles.loginButtonDesktop}>Login</button>
+
+        </nav>
+      </header>
+
+      {/* *** Index Page Main Content *** */}
+      <main>
+        <h1>The new way to mine your favorite Crypto - fast and reliable.</h1>
+      </main>
     </div>
   )
 }
