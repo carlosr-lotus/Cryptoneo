@@ -105,7 +105,12 @@ export default function Home() {
             <p>(XMR)</p>
             <FaMonero fill={'var(--Monero)'} size={120} />
           </div>
-          <h3>And many more...</h3>
+        </div>
+        <h3 className={styles.andManyMore}>And many more...</h3>
+
+        {/* *** "Developed by a group of..." *** */}
+        <div className={styles.developedByContainer}>
+          <h1>Developed by <span>Carlos Lotus</span></h1>
         </div>
 
       </main>

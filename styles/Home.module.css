@@ -189,13 +189,13 @@
   color: var(--Main-White);
 }
 
-/* *** Responsive CSS media -> Main *** */
+/* *** Responsive CSS media -> Main | "Get Started" *** */
 
 /* iPads/Tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .headerContainer {
     width: 90%;
-    margin: 0 auto 5rem;
+    margin: 0 auto 15rem;
 
     grid-template-columns: .5fr .5fr;
   }
@@ -211,10 +211,10 @@
 }
 
 /* Small/Laptops */
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1440px) {
   .getStartedContainer {
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -239,17 +239,36 @@
 @media (min-width: 1440px) and (max-width: 2560px) {
   .getStartedContainer {
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: left;
+  }
+
+  .getStartedContent>h1 {
+    max-width: 50rem;
+    font-size: 4rem;
+  }
+
+  .pickaxeSvg {
+    width: 32rem;
   }
 }
 
 @media (min-width: 2560px) {
   .getStartedContainer {
     width: 75%;
-    margin: 0 auto;
+    margin: 0 auto 25rem;
+  }
+
+  .getStartedContent>h1 {
+    max-width: 50rem;
+    font-size: 4rem;
+  }
+
+  .pickaxeSvg {
+    width: 32rem;
   }
 }
 
@@ -260,7 +279,8 @@
   font-weight: 400;
 }
 
-.chooseCryptoContainer h3 {
+.andManyMore {
+  margin-bottom: 15remfunction;
   font-size: 2rem;
   font-weight: 400;
 }
@@ -296,4 +316,56 @@
 .cryptoBox svg {
   position: absolute;
   bottom: -30px;
+}
+
+/* *** Responsive CSS media -> Main | "Get Started" *** */
+
+@media (min-width: 768px) {
+  .chooseCryptoContainer {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    justify-content: center;
+  }
+
+  /* Bitcoin */
+  .chooseCryptoContainer div:nth-child(1) {
+    grid-column: 2;
+  }
+
+  .chooseCryptoContainer div:nth-child(1)>svg {
+    width: 140px;
+    height: 140px;
+    bottom: -60px;
+  }
+
+  /* Ethereum */
+  .chooseCryptoContainer div:nth-child(2) {
+    width: 17rem;
+    height: 18.5rem;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .chooseCryptoContainer div:nth-child(2)>svg,
+  .chooseCryptoContainer div:nth-child(3)>svg {
+    bottom: -25px;
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Monero */
+  .chooseCryptoContainer div:nth-child(3) {
+    width: 17rem;
+    height: 18.5rem;
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+/* *** "Developed by a group of..." *** */
+.developedByContainer {
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--DevelopedBy-Bg-Color);
 }
