@@ -98,6 +98,10 @@
   display: none;
 }
 
+.navbarDesktop li a:hover {
+  color: var(--Main-Green);
+}
+
 /* *** Responsive CSS media -> Header *** */
 
 /* iPads/Tablets */
@@ -166,7 +170,7 @@
 }
 
 .getStartedContainer {
-  margin-bottom: 15rem;
+  margin-bottom: 20rem;
 }
 
 .getStartedContent>h1 {
@@ -195,7 +199,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .headerContainer {
     width: 90%;
-    margin: 0 auto 15rem;
+    margin: 0 auto 5rem;
 
     grid-template-columns: .5fr .5fr;
   }
@@ -280,7 +284,7 @@
 }
 
 .andManyMore {
-  margin-bottom: 15remfunction;
+  margin-bottom: 20rem;
   font-size: 2rem;
   font-weight: 400;
 }
@@ -318,7 +322,7 @@
   bottom: -30px;
 }
 
-/* *** Responsive CSS media -> Main | "Get Started" *** */
+/* *** Responsive CSS media -> Main | "Choose your Crypto" *** */
 
 @media (min-width: 768px) {
   .chooseCryptoContainer {
@@ -365,7 +369,130 @@
 /* *** "Developed by a group of..." *** */
 .developedByContainer {
   width: 90%;
-  margin: 0 auto;
+
+  padding: 3rem 0;
+  margin: 0 auto 15rem;
+
+  text-transform: uppercase;
+
   border-radius: 5px;
   background-color: var(--DevelopedBy-Bg-Color);
+}
+
+.developedByContainer>h1 {
+  font-weight: 400;
+}
+
+.developedByContainer>h1>span {
+  text-decoration: underline;
+  font-size: 2.5rem;
+}
+
+.developedByContainer>h1>span:hover {
+  color: var(--Main-Green);
+}
+
+.aboutPresentation>svg {
+  width: 90%;
+  height: 40rem;
+  margin: 2rem 0;
+}
+
+.aboutPresentation>p {
+  max-width: 90%;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  text-align: center;
+  text-transform: initial;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .aboutPresentation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .aboutPresentation>svg {
+    width: 50%;
+    margin: 2rem auto;
+  }
+
+  .aboutPresentation>p {
+    max-width: 40%;
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .aboutPresentation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .aboutPresentation>svg {
+    width: 50%;
+    margin: 2rem auto;
+  }
+
+  .aboutPresentation>p {
+    text-align: left;
+    max-width: 50%;
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .developedByContainer {
+    max-width: 120rem;
+  }
+
+  .aboutPresentation>p {
+    text-align: left;
+    max-width: 50%;
+  }
+}
+
+/* *** Our Supporters *** */
+.ourSupportersContainer {
+  margin-bottom: 20rem;
+}
+
+.ourSupportersContainer>h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.ourSupportersContent {
+  margin-top: 8rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 100px 100px;
+  place-items: center;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.ourSupportersContent>div>h2 {
+  margin-top: .3rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.ourSupportersContent>div:nth-child(1)>svg {
+  fill: var(--Binance);
+}
+
+.ourSupportersContent>div:nth-child(3)>svg {
+  fill: var(--Microsoft);
+}
+
+@media (min-width: 768px) {
+  .ourSupportersContent {
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 1fr;
+    gap: 6rem;
+  }
 }
