@@ -32,7 +32,6 @@
 
 .headerLogo {
   font-size: 3rem;
-  font-weight: 400;
   color: var(--Main-Green);
 }
 
@@ -188,7 +187,6 @@
 
   max-width: 28.5rem;
   font-size: 3rem;
-  font-weight: 400;
 }
 
 .getStartedBtn {
@@ -288,7 +286,6 @@
 
 /* *** "Choose your Crypto" *** */
 .divHeaderTitle {
-  /* margin-bottom: 10rem; */
   font-size: 3rem;
   font-weight: 400;
 }
@@ -471,7 +468,6 @@
 
 .ourSupportersContainer>h1 {
   font-size: 3rem;
-  font-weight: 400;
 }
 
 .ourSupportersContent {
@@ -513,7 +509,6 @@
 }
 
 .joinCryptoWorldContainer>h1 {
-  font-weight: 400;
   font-size: 3rem;
   margin-bottom: 8rem;
 }

@@ -45,6 +45,10 @@ li {
   list-style: none;
 }
 
+h1 {
+  font-weight: 400;
+}
+
 button {
   font-family: 'Saira Condensed',
     sans-serif;

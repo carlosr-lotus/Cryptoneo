@@ -73,7 +73,9 @@ export default function Home() {
         <div className={styles.getStartedContainer}>
           <div className={styles.getStartedContent}>
             <h1>The new way to mine your favorite Crypto - fast and reliable.</h1>
-            <button className={styles.getStartedBtn}>Get Started</button>
+            <a href="/signup">
+              <button className={styles.getStartedBtn}>Get Started</button>
+            </a>
           </div>
 
           {/* Pickaxe SVG */}
@@ -225,14 +227,24 @@ export default function Home() {
             <div className={styles.beginnerGetStartedContainer}>
               <h2>Beginner?</h2>
               <p>Don't worry, we got you covered! <br /> Cryptoneo will teach you all you need to know step by step.</p>
-              <button className={styles.getStartedBtn}>Get Started</button>
+
+              <a href="/signup">
+                <button className={styles.getStartedBtn}>
+                  Get Started
+                </button>
+              </a>
             </div>
 
             {/* "Advanced?" */}
             <div className={styles.advancedGetStartedContainer}>
               <h2>Advanced?</h2>
               <p>Already has some experience? Fine. <br />Cryptoneo is here to assist you.</p>
-              <button className={styles.getStartedBtn}>Let's go!</button>
+
+              <a href="/signup">
+                <button className={styles.getStartedBtn}>
+                  Let's go
+                </button>
+              </a>
             </div>
           </div>
 
