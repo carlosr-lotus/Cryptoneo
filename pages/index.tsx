@@ -1,13 +1,14 @@
 // import type { NextPage } from 'next'
 import { useState } from 'react';
 import Head from 'next/head'
+import Link from 'next/link';
 // import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 import { FiMenu } from 'react-icons/fi';
 import { IoCloseSharp } from 'react-icons/io5';
 import { FaBitcoin, FaEthereum, FaMonero } from 'react-icons/fa';
-import { SiBinance, SiDuckduckgo, SiMicrosoft } from 'react-icons/si';
+import { SiBinance, SiDuckduckgo, SiMicrosoft, SiGithub, SiYoutube, SiLinkedin, SiSignal } from 'react-icons/si';
 
 export default function Home() {
 
@@ -36,10 +37,14 @@ export default function Home() {
               <ul>
                 <li><a href="/">Home</a></li>
                 <li>Crypto</li>
-                <li>About</li>
+                <li><a href="https://github.com/carlosr-lotus/Cryptoneo" target="_blank" rel="noopener noreferrer">Source</a></li>
               </ul>
 
-              <button className={styles.loginButton}>Login</button>
+              <a href="/login" className={styles.linkToLoginAMobile}>
+                <button className={styles.loginButton}>
+                  Login
+                </button>
+              </a>
             </>
             :
             ''
@@ -49,10 +54,14 @@ export default function Home() {
           <ul className={styles.navbarDesktop}>
             <li><a href="/">Home</a></li>
             <li><a href="/">Crypto</a></li>
-            <li><a href="/">About</a></li>
+            <li><a href="https://github.com/carlosr-lotus/Cryptoneo" target="_blank" rel="noopener noreferrer">Source</a></li>
           </ul>
 
-          <button className={styles.loginButtonDesktop}>Login</button>
+          <a href="/login" className={styles.linkToLoginA}>
+            <button className={styles.loginButtonDesktop}>
+              login
+            </button>
+          </a>
 
         </nav>
       </header>
@@ -60,6 +69,7 @@ export default function Home() {
       {/* *** Index Page Main Content *** */}
       <main className={styles.mainTag}>
 
+        {/* *** Get Started *** */}
         <div className={styles.getStartedContainer}>
           <div className={styles.getStartedContent}>
             <h1>The new way to mine your favorite Crypto - fast and reliable.</h1>
@@ -203,9 +213,46 @@ export default function Home() {
               <h2>Microsoft</h2>
             </div>
           </div>
+
         </div>
 
+        {/* *** "Join the crypto world now" *** */}
+        <div className={styles.joinCryptoWorldContainer}>
+          <h1>Join the Crypto world now.</h1>
+
+          <div className={styles.joinCryptoBoxesContainer}>
+            {/* "Beginner?" */}
+            <div className={styles.beginnerGetStartedContainer}>
+              <h2>Beginner?</h2>
+              <p>Don't worry, we got you covered! <br /> Cryptoneo will teach you all you need to know step by step.</p>
+              <button className={styles.getStartedBtn}>Get Started</button>
+            </div>
+
+            {/* "Advanced?" */}
+            <div className={styles.advancedGetStartedContainer}>
+              <h2>Advanced?</h2>
+              <p>Already has some experience? Fine. <br />Cryptoneo is here to assist you.</p>
+              <button className={styles.getStartedBtn}>Let's go!</button>
+            </div>
+          </div>
+
+        </div>
       </main>
+
+      {/* *** Page Footer *** */}
+      <footer className={styles.footer}>
+        <p>Cryptoneo is a free and open source project, <br />for more info, visit the links below:</p>
+
+        <div className={styles.socialMediaFooter}>
+          <SiGithub size={25} />
+          <SiYoutube size={25} />
+          <SiLinkedin size={25} />
+          <SiSignal size={25} />
+        </div>
+
+        <p>&#169; 2022 Cryptoneo</p>
+      </footer>
+
     </div>
   )
 }
