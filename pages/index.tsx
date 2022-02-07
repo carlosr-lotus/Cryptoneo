@@ -1,10 +1,10 @@
 // import type { NextPage } from 'next'
 import { useState } from 'react';
 import Head from 'next/head'
-import Link from 'next/link';
-// import Image from 'next/image'
+
 import styles from '../styles/Home.module.css'
 
+// Icons
 import { FiMenu } from 'react-icons/fi';
 import { IoCloseSharp } from 'react-icons/io5';
 import { FaBitcoin, FaEthereum, FaMonero } from 'react-icons/fa';
