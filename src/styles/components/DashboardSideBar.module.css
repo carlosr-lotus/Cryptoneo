@@ -1,0 +1,53 @@
+.sideBarContainer {
+    /* position: fixed; */
+    width: 100%;
+    height: 100vh;
+
+    place-self: end;
+
+    background-color: var(--Background-Color-Darker);
+    color: var(--Main-Green);
+
+    display: grid;
+    grid-template-rows: .1fr 1fr .1fr;
+    /* place-content: center; */
+}
+
+.sideBarContainer>svg:nth-child(1) {
+    place-self: center;
+}
+
+.sideBarAppTools,
+.sideBarAppSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    place-self: center;
+}
+
+.sideBarAppSettings {
+    place-items: end;
+    align-self: center;
+}
+
+.sideBarContainer>svg,
+.sideBarAppTools>svg,
+.sideBarAppSettings>svg {
+    /* border-right: 2px solid magenta; */
+    margin: 1rem 0;
+
+    transition: .2s;
+    cursor: pointer;
+}
+
+.sideBarAppTools>svg {
+    margin: 1.2rem 0;
+}
+
+.sideBarContainer>svg:hover,
+.sideBarAppTools>svg:hover,
+.sideBarAppSettings>svg:hover {
+    color: white;
+}
