@@ -1,0 +1,52 @@
+.dashCurrencyContainer {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+}
+
+.dashCurrencyContent {
+    overflow-y: scroll;
+    width: 80%;
+    height: 80vh;
+    padding: 1.2rem;
+    background-color: var(--Background-Color-Darker);
+    border-radius: .5rem;
+
+    /* display: grid; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    align-self: center;
+    place-self: center;
+}
+
+.dashCurrencyContent>.tableHeader {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border-bottom: 1px solid var(--CryptoBox-border);
+}
+
+.listCryptoData {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    border-bottom: 1px solid var(--CryptoBox-border);
+}
+
+.loadingContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: none;
+}
+
+.loadingWarning {
+    font-size: 3rem;
+}

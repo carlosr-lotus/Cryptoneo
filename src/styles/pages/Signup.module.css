@@ -1,0 +1,124 @@
+.signupPageContainer {
+    padding: 3.5rem 0rem;
+    width: 90%;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-rows: 5rem 1fr;
+    gap: 2.5rem;
+}
+
+.headerLogo {
+    font-size: 3rem;
+    color: var(--Main-Green);
+}
+
+.signupFormContainer {
+    place-self: center;
+    padding: 7rem 4rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    border-radius: 1rem;
+    border: 1px solid var(--CryptoBox-border)
+}
+
+.formTag {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formTag>label {
+    margin-bottom: .5rem;
+    font-size: 1.8rem;
+}
+
+.formTag>input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    border-radius: .5rem;
+    border: 0;
+}
+
+.mobilePrivacyText>p,
+.desktopPrivacyText>p {
+    margin: 1rem 0;
+
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.mobilePrivacyText>p>span,
+.desktopPrivacyText>p>span {
+    color: var(--Main-Green);
+}
+
+.formTag>a>button,
+.formTag>button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: 0;
+
+    font-size: 1.6rem;
+}
+
+.createAccountBtn {
+    margin: 1rem 0;
+    background-color: var(--Main-Green);
+    color: var(--Main-White);
+}
+
+.desktopPrivacyText {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .signupPageContainer {
+        gap: 0;
+    }
+
+    .signupFormContainer {
+        margin: 1.2rem;
+        min-width: 90rem;
+        padding: 9rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .formTag {
+        margin-right: 2rem;
+        width: 50%;
+    }
+
+    .desktopPrivacyText {
+        width: 50%;
+        display: block;
+    }
+
+    .desktopPrivacyText>p {
+        font-size: 2rem;
+    }
+
+    .separateLine {
+        width: .2rem;
+        height: 40rem;
+        margin: .5rem;
+
+        border-radius: .5rem;
+        background-color: var(--CryptoBox-border);
+    }
+
+    .mobilePrivacyText {
+        display: none;
+    }
+}
