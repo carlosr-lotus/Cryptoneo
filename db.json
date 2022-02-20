@@ -1,0 +1,7 @@
+{
+    "users": [
+        {"id": 1,"name": "Rey" , "login": "desertgirl@gmail.com"}, 
+        {"id": 2,"name": "Lucas Romero", "login": "romero@gmail.com"}, 
+        {"id": 3,"name": "Belo", "login": "perfume@gmail.com"}
+    ]
+}
