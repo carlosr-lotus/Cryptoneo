@@ -41,10 +41,10 @@ export default function CurrencyTab() {
                                 return (
                                     <div key={index} className={styles.listCryptoData}>
                                         <h2>
-                                            <img src={data.imagem} />
-                                            {data.name}
+                                            <img src={data.image} />
+                                            {data.name} ({data.symbol.toUpperCase()})
                                         </h2>
-                                        <h2>$43.000 <span>usd</span></h2>
+                                        <h2>${data.current_price} <span>usd</span></h2>
                                     </div>
                                 )
                             })}

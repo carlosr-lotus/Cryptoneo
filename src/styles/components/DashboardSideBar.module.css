@@ -35,6 +35,7 @@
 .sideBarContainer>svg,
 .sideBarAppTools>svg,
 .sideBarAppSettings>svg {
+    color: var(--Main-Green);
     /* border-right: 2px solid magenta; */
     margin: 1rem 0;
 
@@ -49,5 +50,5 @@
 .sideBarContainer>svg:hover,
 .sideBarAppTools>svg:hover,
 .sideBarAppSettings>svg:hover {
-    color: white;
+    color: var(--Main-White);
 }
