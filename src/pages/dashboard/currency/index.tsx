@@ -1,18 +1,25 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { UserData } from "../../login";
 import DashboardSideBar from "../../../components/dashboardSidebar";
 
 import styles from "../../../styles/pages/DashboardCurrency.module.css";
-import { useEffect, useState } from "react";
 
-export default function CurrencyTab() {
+interface UserDataProps {
+    data: UserData
+}
 
+export default function CurrencyTab(props: UserData) {
+
+    const dataPropsTest = props;
     const [crypto, setCrypto] = useState([]);
 
+    // Get Coingecko API to display crypto pricing list
     useEffect(() => {
+        console.log(dataPropsTest);
         axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false')
             .then((res) => {
-                console.log(res.data);
                 setCrypto(res.data);
             }).catch((res) => {
                 console.log(res);
@@ -30,6 +37,7 @@ export default function CurrencyTab() {
 
                 <div className={styles.dashCurrencyContent}>
 
+                    {/* Crypto Table Content */}
                     {crypto ?
                         <>
                             <div className={styles.tableHeader}>
