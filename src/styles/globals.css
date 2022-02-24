@@ -13,6 +13,7 @@
   --Monero: #FF6600;
   --CryptoBox-border: #707070;
   --DevelopedBy-Bg-Color: #3E3E3E;
+  --Offline-Status: #D32E2E;
 
   /* Colors Supporters */
   --Binance: #f3ba2f;
@@ -46,7 +47,8 @@ li {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-weight: 400;
 }
 
