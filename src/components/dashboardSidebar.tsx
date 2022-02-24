@@ -11,7 +11,8 @@ import { BsLightningChargeFill } from 'react-icons/bs';
 import styles from '../styles/components/DashboardSideBar.module.css';
 
 export default function DashboardSideBar(props) {
-    console.log(props.pageName)
+    console.log(props.userID)
+    let getUserID = props.userID
 
     function getCryptoPrice() {
         axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
@@ -27,13 +28,22 @@ export default function DashboardSideBar(props) {
             <FaUserAlt size={21} />
 
             <div className={styles.sideBarAppTools}>
-                <Link href="/dashboard/currency">
+                <Link href={{
+                    pathname: "/dashboard/currency",
+                    query: { userID: getUserID }
+                }}>
                     <IoStatsChart size={26} />
                 </Link>
-                <Link href="/dashboard/mining">
+                <Link href={{
+                    pathname: "/dashboard/mining",
+                    query: { userID: getUserID }
+                }}>
                     <BsLightningChargeFill size={26} />
                 </Link>
-                <Link href="/dashboard/wallet">
+                <Link href={{
+                    pathname: "/dashboard/wallet",
+                    query: { userID: getUserID }
+                }}>
                     <FaWallet size={26} />
                 </Link>
             </div>
