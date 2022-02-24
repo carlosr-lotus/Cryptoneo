@@ -17,7 +17,7 @@
                     "name": "My GPU 2",
                     "blockchain": "Ethereum",
                     "status": "offline",
-                    "color": "var(--Ethereum"
+                    "color": "var(--Ethereum)"
                 }]
         }, 
         {"id": 2,"name": "Lucas Romero", "login": "romero@gmail.com"}, 
