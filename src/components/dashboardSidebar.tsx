@@ -13,12 +13,6 @@ import styles from '../styles/components/DashboardSideBar.module.css';
 export default function DashboardSideBar(props) {
     console.log(props.pageName)
 
-    function checkPageName() {
-        if (props.pageName === 'currency') {
-            console.log(`Current page: ${props.pageName}`)
-        };
-    };
-
     function getCryptoPrice() {
         axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
             .then((res) => {
@@ -33,9 +27,15 @@ export default function DashboardSideBar(props) {
             <FaUserAlt size={21} />
 
             <div className={styles.sideBarAppTools}>
-                <IoStatsChart size={26} />
-                <BsLightningChargeFill size={26} />
-                <FaWallet size={26} />
+                <Link href="/dashboard/currency">
+                    <IoStatsChart size={26} />
+                </Link>
+                <Link href="/dashboard/mining">
+                    <BsLightningChargeFill size={26} />
+                </Link>
+                <Link href="/dashboard/wallet">
+                    <FaWallet size={26} />
+                </Link>
             </div>
 
             <div className={styles.sideBarAppSettings}>
