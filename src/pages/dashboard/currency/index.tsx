@@ -5,13 +5,16 @@ import { UserData } from "../../login";
 import DashboardSideBar from "../../../components/dashboardSidebar";
 
 import styles from "../../../styles/pages/DashboardCurrency.module.css";
+import { useRouter } from "next/router";
 
-interface UserDataProps {
-    data: UserData
-}
+// interface UserDataProps {
+//     data: UserData
+// }
 
-export default function CurrencyTab(props: UserData) {
+export default function CurrencyTab(props) {
 
+    const { query } = useRouter();
+    console.log(query.userID);
     const dataPropsTest = props;
     const [crypto, setCrypto] = useState([]);
 
@@ -32,7 +35,7 @@ export default function CurrencyTab(props: UserData) {
                 <title>Cryptoneo | Currency</title>
             </Head>
 
-            <DashboardSideBar pageName={"currency"} />
+            <DashboardSideBar userID={query.userID} />
             <div className={styles.dashCurrencyContainer}>
                 <div></div>
                 <div className={styles.dashCurrencyContent}>
