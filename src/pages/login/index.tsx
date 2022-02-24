@@ -2,42 +2,69 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import styles from '../../styles/pages/Login.module.css';
 
+export interface UserData {
+    name: string,
+    email: string,
+    password: string,
+    hardwareMining?: [],
+}
+
 export default function Login() {
 
+    const [userDataDB, setUserDataDB] = useState<[UserData]>();
     const router = useRouter();
     const { register, handleSubmit } = useForm();
 
-    function submitLogin(paramsData) {
-        console.log(paramsData);
+    useEffect(() => {
+        const userLoginSession = sessionStorage.getItem('login');
 
-        axios.get('http://localhost:4000/users/', {
-            params: {
-                login: paramsData.email
-            }
-        })
-            .then(res => {
-                console.log(res.data);
-                if (res.data.length == 1) {
-                    console.log('Login sucessful!')
-
-                    router.push({
-                        pathname: '/dashboard/currency',
-                        query: {
-                            loginUser: res.data[0].login,
-                            userName: res.data[0].name,
-                        }
-                    })
-                } else {
-                    console.log('Error! Login not found!');
+        if (userLoginSession) {
+            axios.get('http://localhost:4000/users', {
+                params: {
+                    login: userLoginSession
                 }
-
+            }).then(res => {
+                console.log(res.data);
+                setUserDataDB(res.data);
             }).catch(error => {
                 console.log(error);
             });
+        }
+    }, [])
+
+    function submitLogin(paramsData) {
+
+        const userLogin = paramsData.email;
+
+        axios.get('http://localhost:4000/users/', {
+            params: {
+                login: userLogin
+            }
+        }).then(res => {
+            console.log(res.data);
+            if (res.data.length == 1) {
+
+                setUserDataDB(res.data[0]);
+                sessionStorage.setItem('login', res.data[0].login);
+
+                router.push({
+                    pathname: '/dashboard/currency',
+                    query: {
+                        loginUser: res.data[0].login,
+                        userName: res.data[0].name,
+                    }
+                });
+            } else {
+                console.log('Error! Login not found!');
+            }
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     return (
