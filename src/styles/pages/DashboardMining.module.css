@@ -1,0 +1,151 @@
+.dashMiningContainer {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+}
+
+.dashMiningContent {
+    width: 90%;
+    height: 80vh;
+    /* padding: 1.2rem; */
+
+    border-radius: .5rem;
+
+    align-self: center;
+    place-self: center;
+
+    /* -webkit-box-shadow: 0px 0px 8px -1px #000000; */
+    /* box-shadow: 0px 0px 8px -1px #000000; */
+}
+
+.dashMiningContent>h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.hardwareBlock {
+    position: relative;
+    margin: 2rem auto;
+    /* padding: 1.5rem; */
+    width: 90%;
+
+    border-radius: .5rem;
+    background-color: var(--Background-Color-Darker);
+
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+}
+
+.cryptoColor {
+    width: 100%;
+    height: 100%;
+
+    grid-row: 1 / span 2;
+
+    background-color: var(--Bitcoin);
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+}
+
+.hardwareContent {
+    width: 100%;
+    padding: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid magenta;
+}
+
+.hardwareBlock>svg {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    right: auto;
+
+    cursor: pointer;
+}
+
+.hardwareDetails {
+    width: 100%;
+}
+
+.moreDetailsContainer {
+    /* padding-left: 2rem; */
+    width: 100%;
+    padding: 2rem;
+}
+
+.mobileStatusBallOnline,
+.mobileStatusBallOffline {
+    width: 1.2rem;
+    height: 1.2rem;
+
+    border-radius: .5rem;
+    background-color: var(--Main-Green);
+}
+
+.mobileStatusBallOffline {
+    background-color: var(--Offline-Status);
+}
+
+.statusOffline {
+    color: var(--Offline-Status);
+}
+
+.statusOnline {
+    color: var(--Main-Green);
+}
+
+.desktopStatus {
+    display: none;
+}
+
+/* More Details */
+.moreDetailsContainer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.moreDetailsContainer>.stopStartMiningBtn {
+    padding: .5rem;
+    border-radius: .5rem;
+    background-color: var(--Offline-Status);
+    color: var(--Main-White);
+}
+
+@media (min-width: 1024px) {
+    .dashMiningContainer {
+        grid-template-columns: 7rem 1fr;
+    }
+
+    .dashMiningContent>h1 {
+        font-size: 3rem;
+    }
+
+    .hardwareBlock {
+        width: 50rem;
+        grid-template-columns: 4rem 1fr;
+    }
+
+    .hardwareDetails {
+        width: 50%;
+        font-size: 1.4rem;
+    }
+
+    .hardwareBlock {
+        width: 90rem;
+        /* padding: 2.5rem; */
+    }
+
+    .mobileStatusBallOffline,
+    .mobileStatusBallOnline {
+        display: none;
+    }
+
+    .desktopStatus {
+        padding-right: 1.5rem;
+        display: block;
+    }
+}

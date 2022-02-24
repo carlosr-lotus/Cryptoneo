@@ -27,6 +27,11 @@
     border-bottom: 1px solid var(--CryptoBox-border);
 }
 
+.tableHeader>h1:nth-child(2),
+.listCryptoData>h2:nth-child(2) {
+    place-self: end;
+}
+
 .listCryptoData {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
@@ -49,7 +54,7 @@
 }
 
 .listCryptoData>h2:nth-child(2)>span {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 
@@ -77,6 +82,11 @@
 
     .tableHeader {
         font-size: 1.5rem;
+    }
+
+    .tableHeader>h1:nth-child(2),
+    .listCryptoData>h2:nth-child(2) {
+        place-self: start;
     }
 
     .listCryptoData {
