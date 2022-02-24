@@ -55,8 +55,7 @@ export default function Login() {
                 router.push({
                     pathname: '/dashboard/currency',
                     query: {
-                        loginUser: res.data[0].login,
-                        userName: res.data[0].name,
+                        userID: res.data[0].id
                     }
                 });
             } else {
