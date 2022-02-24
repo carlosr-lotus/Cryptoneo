@@ -115,9 +115,17 @@
     color: var(--Main-White);
 }
 
+.totalGainsContainer>h3 {
+    color: var(--Main-Green);
+}
+
+.totalGainsContainer>h3>span {
+    color: grey;
+}
+
 @media (min-width: 1024px) {
     .dashMiningContainer {
-        grid-template-columns: 7rem 1fr;
+        grid-template-columns: 1fr;
     }
 
     .dashMiningContent>h1 {

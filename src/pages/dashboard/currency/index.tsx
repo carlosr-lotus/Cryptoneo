@@ -32,9 +32,9 @@ export default function CurrencyTab(props: UserData) {
                 <title>Cryptoneo | Currency</title>
             </Head>
 
+            <DashboardSideBar pageName={"currency"} />
             <div className={styles.dashCurrencyContainer}>
-                <DashboardSideBar pageName={"currency"} />
-
+                <div></div>
                 <div className={styles.dashCurrencyContent}>
 
                     {/* Crypto Table Content */}

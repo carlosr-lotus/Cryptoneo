@@ -13,8 +13,11 @@ export default function MiningTab() {
                 <title>Cryptoneo | Mining</title>
             </Head>
 
+            <DashboardSideBar />
+
             <div className={styles.dashMiningContainer}>
-                <DashboardSideBar />
+
+                <div></div>
 
                 <div className={styles.dashMiningContent}>
 
@@ -50,44 +53,23 @@ export default function MiningTab() {
                         <IoMdArrowDropdown size={18} />
 
                         <div className={styles.moreDetailsContainer}>
-                            <h2>GPU: RTX 3060 12GB</h2>
-                            <h3>ID: 81421391224</h3>
+                            <h2><span>GPU: </span>RTX 3060 12GB</h2>
+                            <h3><span>ID: </span> 81421391224</h3>
 
-                            <button className={styles.stopStartMiningBtn}>Stop Mining</button>
-                        </div>
-
-                    </div>
-
-                    {/* <div className={styles.hardwareBlock}>
-                        <div className={styles.cryptoColor} style={{ backgroundColor: 'var(--Ethereum)' }}></div>
-
-                        <div className={styles.hardwareContent}>
-
-                            <div className={styles.hardwareDetails}>
-                                <h2>
-                                    <span className={styles.statusOffline}>Name: </span>My GPU 2
-                                </h2>
-
+                            <div className={styles.totalGainsContainer}>
+                                <h2>Total gains in the last 30 days</h2>
                                 <h3>
-                                    <span className={styles.statusOffline}>Blockchain: </span>Ethereum
+                                    0.00183040
+                                    <span> $ 80.01 USD</span>
                                 </h3>
                             </div>
 
-                            <div className={styles.mobileStatusBallOffline}></div>
-
-                            <h2 className={styles.desktopStatus}>
-                                STATUS: <span className={styles.statusOffline}>OFFLINE</span>
-                            </h2>
-
+                            <button className={styles.stopStartMiningBtn}>
+                                Stop Mining
+                            </button>
                         </div>
 
-                        <IoMdArrowDropdown size={18} />
-
-                  
-                        <div className={styles.moreDetailsContainer}>
-                            <p>NINGUEM ME PARA!</p>
-                        </div>
-                    </div> */}
+                    </div>
 
                 </div>
             </div>

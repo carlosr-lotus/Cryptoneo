@@ -1,7 +1,9 @@
 .sideBarContainer {
-    /* position: fixed; */
-    width: 100%;
+    position: fixed;
+    width: 5rem;
     height: 100vh;
+    left: 0;
+    bottom: 0;
 
     place-self: end;
 
@@ -51,4 +53,10 @@
 .sideBarAppTools>svg:hover,
 .sideBarAppSettings>svg:hover {
     color: var(--Main-White);
+}
+
+@media (min-width: 1024px) {
+    .sideBarContainer {
+        width: 7rem;
+    }
 }
