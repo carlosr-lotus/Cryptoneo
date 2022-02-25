@@ -7,14 +7,12 @@ import DashboardSideBar from "../../../components/dashboardSidebar";
 import styles from "../../../styles/pages/DashboardCurrency.module.css";
 import { useRouter } from "next/router";
 
-// interface UserDataProps {
-//     data: UserData
-// }
 
 export default function CurrencyTab(props) {
 
     const { query } = useRouter();
     console.log(query.userID);
+
     const dataPropsTest = props;
     const [crypto, setCrypto] = useState([]);
 
@@ -23,6 +21,7 @@ export default function CurrencyTab(props) {
         console.log(dataPropsTest);
         axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false')
             .then((res) => {
+                console.log(res.data);
                 setCrypto(res.data);
             }).catch((res) => {
                 console.log(res);
@@ -35,7 +34,7 @@ export default function CurrencyTab(props) {
                 <title>Cryptoneo | Currency</title>
             </Head>
 
-            <DashboardSideBar userID={query.userID} />
+            <DashboardSideBar />
             <div className={styles.dashCurrencyContainer}>
                 <div></div>
                 <div className={styles.dashCurrencyContent}>
