@@ -10,6 +10,7 @@
                     "name": "My GPU 1",
                     "blockchain": "Bitcoin",
                     "status": "online",
+                    "gainsLast30Days": "0.00183040",
                     "color": "var(--Bitcoin)"
                 }, 
                 {
@@ -17,6 +18,7 @@
                     "name": "My GPU 2",
                     "blockchain": "Ethereum",
                     "status": "offline",
+                    "gainsLast30Days": "0.00183040",
                     "color": "var(--Ethereum)"
                 }]
         }, 
