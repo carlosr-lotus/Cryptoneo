@@ -31,6 +31,14 @@ export default function Login() {
             }).then(res => {
                 console.log(res.data);
                 setUserDataDB(res.data);
+                sessionStorage.setItem('userID', res.data[0].id);
+
+                router.push({
+                    pathname: '/dashboard/currency',
+                    query: {
+                        userID: sessionStorage.getItem('userID')
+                    }
+                });
             }).catch(error => {
                 console.log(error);
             });
@@ -51,6 +59,7 @@ export default function Login() {
 
                 setUserDataDB(res.data[0]);
                 sessionStorage.setItem('login', res.data[0].login);
+                sessionStorage.setItem('userID', res.data[0].id);
 
                 router.push({
                     pathname: '/dashboard/currency',
