@@ -8,7 +8,6 @@
 .dashMiningContent {
     width: 90%;
     height: 80vh;
-    /* padding: 1.2rem; */
 
     border-radius: .5rem;
 
@@ -28,7 +27,6 @@
 .hardwareBlock {
     position: relative;
     margin: 2rem auto;
-    /* padding: 1.5rem; */
     width: 90%;
 
     border-radius: .5rem;
@@ -44,7 +42,6 @@
 
     grid-row: 1 / span 2;
 
-    background-color: var(--Bitcoin);
     border-top-left-radius: .5rem;
     border-bottom-left-radius: .5rem;
 }
@@ -56,8 +53,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    border-bottom: 1px solid magenta;
 }
 
 .hardwareBlock>svg {
@@ -74,9 +69,10 @@
 }
 
 .moreDetailsContainer {
-    /* padding-left: 2rem; */
     width: 100%;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem;
+
+    border-top: .1rem solid var(--CryptoBox-border);
 }
 
 .mobileStatusBallOnline,
@@ -107,7 +103,9 @@
 /* More Details */
 .moreDetailsContainer {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
+    display: grid;
 }
 
 .moreDetailsContainer>.stopStartMiningBtn {
@@ -117,12 +115,28 @@
     color: var(--Main-White);
 }
 
-.totalGainsContainer>h3 {
-    color: var(--Main-Green);
+.totalGainsContainer {
+    margin: 1rem 0;
+    padding: 1.2rem;
+    background-color: var(--Background-Color);
+    border-radius: .5rem;
 }
 
-.totalGainsContainer>h3>span {
+.totalGainsContainer>div>h3 {
+    padding: .4rem 0;
+    margin-bottom: .4rem;
+
+    color: var(--Main-Green);
+    border-bottom: 1px solid var(--CryptoBox-border);
+}
+
+.totalGainsContainer>div>h3>span {
     color: grey;
+}
+
+.stopStartMiningBtn {
+    place-self: end;
+    margin-bottom: 1rem;
 }
 
 @media (min-width: 1024px) {
@@ -135,7 +149,6 @@
     }
 
     .hardwareBlock {
-        width: 50rem;
         grid-template-columns: 4rem 1fr;
     }
 
@@ -145,7 +158,7 @@
     }
 
     .hardwareBlock {
-        width: 90rem;
+        width: 80rem;
         /* padding: 2.5rem; */
     }
 
@@ -157,5 +170,49 @@
     .desktopStatus {
         padding-right: 1.5rem;
         display: block;
+    }
+
+    .moreDetailsContainer {
+        grid-template-columns: .5fr auto;
+        grid-template-rows: .5fr 1fr;
+    }
+
+    /* moreDetails elements */
+
+    .hardwareSpecs {
+        font-size: 1.4rem;
+    }
+
+    .totalGainsContainer {
+        grid-column: 1 / span 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-size: 1.2rem;
+    }
+
+    .totalGainsContainer>div {
+        font-size: 1.3rem;
+        width: 50%;
+        border-right: 1px solid var(--CryptoBox-border);
+    }
+
+    .totalGainsContainer>div>h3 {
+        border-bottom: 0;
+    }
+
+    .totalGainsContainer>h2 {
+        padding-right: 1.5rem;
+    }
+
+    /* Button */
+    .stopStartMiningBtn {
+        font-size: 2rem;
+
+        grid-column: 2;
+        grid-row: 1;
+        place-self: end;
+        align-self: start;
     }
 }
