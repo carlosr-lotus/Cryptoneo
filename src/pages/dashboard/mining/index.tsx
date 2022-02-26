@@ -18,8 +18,8 @@ import styles from "../../../styles/pages/DashboardMining.module.css";
 
 export default function MiningTab() {
 
-    const [userHardwareData, setUserHardwareData] = useState();
-    const [moreHardwareDetails, setMoreHardwareDetails] = useState(false);
+    const [userHardwareData, setUserHardwareData] = useState([]);
+    const [moreHardwareDetails, setMoreHardwareDetails] = useState({});
 
     useEffect(() => {
 
@@ -33,6 +33,17 @@ export default function MiningTab() {
                 console.log(error);
             })
     }, []);
+
+
+    // Toggle action to display more details of the mining hardware separately
+    const toggleMoreDetails = id => {
+        console.log(id)
+        console.log(moreHardwareDetails)
+        setMoreHardwareDetails(prevShowHardwareDetails => ({
+            ...prevShowHardwareDetails,
+            [id]: !prevShowHardwareDetails[id]
+        }))
+    };
 
     return (
         <>
@@ -52,63 +63,68 @@ export default function MiningTab() {
                     <h1>Mining Hardware</h1>
 
                     {/* Hardware Block */}
-                    <div className={styles.hardwareBlock}>
-                        <div className={styles.cryptoColor} style={{ backgroundColor: 'var(--Bitcoin)' }}></div>
+                    {userHardwareData ?
+                        userHardwareData.map((data, index) => {
+                            return (
+                                <div className={styles.hardwareBlock} key={index}>
+                                    <div className={styles.cryptoColor} style={{ backgroundColor: `${data.color}` }}></div>
 
-                        <div className={styles.hardwareContent}>
+                                    <div className={styles.hardwareContent}>
 
-                            <div className={styles.hardwareDetails}>
-                                <h2>
-                                    <span className={styles.statusOnline}>Name: </span>My GPU 1
-                                </h2>
-                                <h3>
-                                    <span className={styles.statusOnline}>Blockchain: </span>Bitcoin
-                                </h3>
-                            </div>
+                                        <div className={styles.hardwareDetails}>
+                                            <h2>
+                                                <span style={{ color: `${data.statusColor}` }}>Name: </span>{data.name}
+                                            </h2>
+                                            <h3>
+                                                <span style={{ color: `${data.statusColor}` }} >Blockchain: </span>{data.blockchain}
+                                            </h3>
+                                        </div>
 
-                            <div className={styles.mobileStatusBallOnline}></div>
+                                        <div style={{ backgroundColor: `${data.statusColor}` }} className={styles.mobileStatusBall}></div>
 
-                            <h2 className={styles.desktopStatus}>
-                                STATUS: <span className={styles.statusOnline}>ONLINE</span>
-                            </h2>
+                                        <h2 className={styles.desktopStatus}>
+                                            STATUS: <span className={styles.statusOnline} style={{ color: `${data.statusColor}` }}>{data.status.toUpperCase()}</span>
+                                        </h2>
 
-                        </div>
-
-                        {/* Arrow UP/DOWN */}
-                        {moreHardwareDetails ?
-                            <IoMdArrowDropup size={18} onClick={() => setMoreHardwareDetails(false)} />
-                            :
-                            <IoMdArrowDropdown size={18} onClick={() => setMoreHardwareDetails(true)} />}
-
-                        {/* Display Hardware Details */}
-                        {moreHardwareDetails ?
-                            <div className={styles.moreDetailsContainer}>
-                                <div className={styles.hardwareSpecs}>
-                                    <h2><span className={styles.statusOnline}>GPU: </span>RTX 3060 12GB</h2>
-                                    <h3><span className={styles.statusOnline}>ID: </span> 81421391224</h3>
-                                </div>
-
-                                <div className={styles.totalGainsContainer}>
-                                    <div>
-                                        <h2>Total gains in the last 30 days</h2>
-                                        <h3>
-                                            0.00183040
-                                            <span> $ 80.01 USD</span>
-                                        </h3>
                                     </div>
 
-                                    <h2>All gains are automatically sent to local wallet.</h2>
+                                    {/* Arrow UP/DOWN */}
+                                    <IoMdArrowDropdown size={18} onClick={() => toggleMoreDetails(data.id)} />
+
+                                    {/* Display Hardware Details */}
+                                    {moreHardwareDetails[data.id] ?
+                                        <div className={styles.moreDetailsContainer}>
+                                            <div className={styles.hardwareSpecs}>
+                                                <h2><span style={{ color: `${data.statusColor}` }}>GPU: </span>{data.gpu}</h2>
+                                                <h3><span style={{ color: `${data.statusColor}` }}>ID: </span> {data.id}</h3>
+                                            </div>
+
+                                            <div className={styles.totalGainsContainer}>
+                                                <div>
+                                                    <h2>Total gains in the last 30 days</h2>
+                                                    <h3>
+                                                        {data.gainsLast30Days}
+                                                        <span> $ 80.01 USD</span>
+                                                    </h3>
+                                                </div>
+
+                                                <h2>All gains are automatically sent to local wallet.</h2>
+                                            </div>
+
+                                            <button style={{ backgroundColor: data.status === 'online' ? `var(--Offline-Status)` : `var(--Main-Green)` }} className={styles.stopStartMiningBtn}>
+                                                {data.status === 'online' ? 'Stop Mining' : 'Start Mining'}
+                                            </button>
+                                        </div>
+                                        :
+                                        null
+                                    }
+
                                 </div>
-
-                                <button className={styles.stopStartMiningBtn}>
-                                    Stop Mining
-                                </button>
-                            </div>
-                            :
-                            <div></div>
-                        }
-
-                    </div>
+                            )
+                        })
+                        :
+                        <div>Loading...</div>
+                    }
 
                 </div>
             </div>
