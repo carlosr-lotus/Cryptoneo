@@ -12,33 +12,61 @@ import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 import styles from "../../../styles/pages/DashboardMining.module.css";
 
-// interface UserDataProps {
-//     data: UserData
-// }
+interface userDataInterface {
+    name: string,
+    login: string,
+    hardwareMining: [any]
+}
 
 export default function MiningTab() {
 
+    const router = useRouter();
+
+    const [userDataInterface, setUserDataInterface] = useState<userDataInterface>()
     const [userHardwareData, setUserHardwareData] = useState([]);
     const [moreHardwareDetails, setMoreHardwareDetails] = useState({});
 
     useEffect(() => {
+        getUserData()
+    }, []);
 
+    // GET request to DB to get user data
+    function getUserData() {
         const userID = sessionStorage.getItem('userID')
 
         axios.get(`http://localhost:4000/users/${userID}`)
             .then((res) => {
-                console.log(res.data.hardwareMining);
                 setUserHardwareData(res.data.hardwareMining);
+                setUserDataInterface(res.data)
             }).catch(error => {
                 console.log(error);
             })
-    }, []);
+    }
 
+    // PUT request to DB to update item
+    function updateItem(statusUpdate, hardwareIndex) {
+        console.log(userDataInterface)
+        if (statusUpdate === 'online') {
+            userDataInterface.hardwareMining[hardwareIndex].status = 'offline'
+            userDataInterface.hardwareMining[hardwareIndex].statusColor = 'var(--Offline-Status)'
+        } else {
+            userDataInterface.hardwareMining[hardwareIndex].status = 'online'
+            userDataInterface.hardwareMining[hardwareIndex].statusColor = 'var(--Main-Green)'
+        };
+
+        const userID = sessionStorage.getItem('userID')
+
+        axios.put(`http://localhost:4000/users/${userID}`, {
+            name: userDataInterface.name,
+            login: userDataInterface.login,
+            hardwareMining: userDataInterface.hardwareMining
+        }).then(res => {
+            getUserData();
+        })
+    };
 
     // Toggle action to display more details of the mining hardware separately
     const toggleMoreDetails = id => {
-        console.log(id)
-        console.log(moreHardwareDetails)
         setMoreHardwareDetails(prevShowHardwareDetails => ({
             ...prevShowHardwareDetails,
             [id]: !prevShowHardwareDetails[id]
@@ -111,7 +139,10 @@ export default function MiningTab() {
                                                 <h2>All gains are automatically sent to local wallet.</h2>
                                             </div>
 
-                                            <button style={{ backgroundColor: data.status === 'online' ? `var(--Offline-Status)` : `var(--Main-Green)` }} className={styles.stopStartMiningBtn}>
+                                            <button
+                                                onClick={() => updateItem(data.status, index)}
+                                                style={{ backgroundColor: data.status === 'online' ? `var(--Offline-Status)` : `var(--Main-Green)` }}
+                                                className={styles.stopStartMiningBtn}>
                                                 {data.status === 'online' ? 'Stop Mining' : 'Start Mining'}
                                             </button>
                                         </div>
