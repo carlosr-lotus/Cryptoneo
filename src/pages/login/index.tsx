@@ -24,7 +24,7 @@ export default function Login() {
         const userLoginSession = sessionStorage.getItem('login');
 
         if (userLoginSession) {
-            axios.get('http://localhost:4000/users', {
+            axios.get('http://localhost:4000/users/', {
                 params: {
                     login: userLoginSession
                 }
