@@ -1,32 +1,41 @@
 {
-    "users": [
+  "users": [
+    {
+      "name": "Rey",
+      "login": "desertgirl@gmail.com",
+      "hardwareMining": [
         {
-            "id": 1,
-            "name": "Rey", 
-            "login": "desertgirl@gmail.com",
-            "hardwareMining": [
-                {
-                    "id": "81421391224",
-                    "name": "My GPU 1",
-                    "gpu": "RTX 3060 12GB",
-                    "blockchain": "Bitcoin",
-                    "status": "online",
-                    "statusColor": "var(--Main-Green)",
-                    "gainsLast30Days": "0.00183040",
-                    "color": "var(--Bitcoin)"
-                }, 
-                {
-                    "id": "31431984123",
-                    "name": "My GPU 2",
-                    "gpu": "GTX 1660 Super 6GB",
-                    "blockchain": "Ethereum",
-                    "status": "offline",
-                    "statusColor": "var(--Offline-Status)",
-                    "gainsLast30Days": "0.00183040",
-                    "color": "var(--Ethereum)"
-                }]
-        }, 
-        {"id": 2,"name": "Lucas Romero", "login": "romero@gmail.com"}, 
-        {"id": 3,"name": "Belo", "login": "perfume@gmail.com"}
-    ]
+          "id": "81421391224",
+          "name": "My GPU 1",
+          "gpu": "RTX 3060 12GB",
+          "blockchain": "Bitcoin",
+          "status": "online",
+          "statusColor": "var(--Main-Green)",
+          "gainsLast30Days": "0.00183040",
+          "color": "var(--Bitcoin)"
+        },
+        {
+          "id": "31431984123",
+          "name": "My GPU 2",
+          "gpu": "GTX 1660 Super 6GB",
+          "blockchain": "Ethereum",
+          "status": "offline",
+          "statusColor": "var(--Offline-Status)",
+          "gainsLast30Days": "0.00183040",
+          "color": "var(--Ethereum)"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Lucas Romero",
+      "login": "romero@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Belo",
+      "login": "perfume@gmail.com"
+    }
+  ]
 }
