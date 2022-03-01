@@ -1,28 +1,46 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+// Packages
 import axios from "axios";
+import { useForm } from "react-hook-form";
+import Popup from "reactjs-popup";
 
 // Components
-import { UserData } from "../../login";
 import DashboardSideBar from "../../../components/dashboardSidebar";
 
 // Icons
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { GrFormAdd } from 'react-icons/gr';
 
 import styles from "../../../styles/pages/DashboardMining.module.css";
 
 interface userDataInterface {
+    id: number,
     name: string,
     login: string,
     hardwareMining: [any]
 }
 
+interface addHardwareInterface {
+    id: string,
+    name: string,
+    gpu: string,
+    blockchain: string,
+    status: string,
+    statusColor: string,
+    gainsLast30Days: string,
+    color: string
+}
+
 export default function MiningTab() {
 
     const router = useRouter();
+    const { register, handleSubmit } = useForm();
 
-    const [userDataInterface, setUserDataInterface] = useState<userDataInterface>()
+    const [userDataInterface, setUserDataInterface] = useState<userDataInterface>();
+    const [addHardwareInterface, setAddHardwareInterface] = useState<addHardwareInterface>();
     const [userHardwareData, setUserHardwareData] = useState([]);
     const [moreHardwareDetails, setMoreHardwareDetails] = useState({});
 
@@ -30,7 +48,7 @@ export default function MiningTab() {
         getUserData()
     }, []);
 
-    // GET request to DB to get user data
+    // GET request to DB to get user data //
     function getUserData() {
         const userID = sessionStorage.getItem('userID')
 
@@ -43,9 +61,9 @@ export default function MiningTab() {
             })
     }
 
-    // PUT request to DB to update item
+    // PUT request to DB to update item //
     function updateItem(statusUpdate, hardwareIndex) {
-        console.log(userDataInterface)
+
         if (statusUpdate === 'online') {
             userDataInterface.hardwareMining[hardwareIndex].status = 'offline'
             userDataInterface.hardwareMining[hardwareIndex].statusColor = 'var(--Offline-Status)'
@@ -57,6 +75,7 @@ export default function MiningTab() {
         const userID = sessionStorage.getItem('userID')
 
         axios.put(`http://localhost:4000/users/${userID}`, {
+            id: userDataInterface.id,
             name: userDataInterface.name,
             login: userDataInterface.login,
             hardwareMining: userDataInterface.hardwareMining
@@ -65,7 +84,36 @@ export default function MiningTab() {
         })
     };
 
-    // Toggle action to display more details of the mining hardware separately
+    // POST request to add new hardware //
+    function addNewHardware(newData) {
+
+        const remainingData = {
+            id: (Math.floor(Math.random() * 100000000000)).toString(),
+            name: newData.name,
+            gpu: newData.gpu,
+            blockchain: newData.blockchain,
+            status: 'offline',
+            statusColor: 'var(--Offline-Status)',
+            gainsLast30Days: '0',
+            color: `var(--${newData.blockchain.charAt(0).toUpperCase() + newData.blockchain.slice(1)})`
+        }
+
+        userDataInterface.hardwareMining.push(remainingData);
+
+        const userID = sessionStorage.getItem('userID');
+
+        axios.put(`http://localhost:4000/users/${userID}`, {
+            id: userDataInterface.id,
+            name: userDataInterface.name,
+            login: userDataInterface.login,
+            hardwareMining: userDataInterface.hardwareMining,
+        }).then(res => {
+            getUserData();
+            console.log(res);
+        })
+    }
+
+    // Toggle action to display more details of the mining hardware separately //
     const toggleMoreDetails = id => {
         setMoreHardwareDetails(prevShowHardwareDetails => ({
             ...prevShowHardwareDetails,
@@ -84,11 +132,12 @@ export default function MiningTab() {
             <div className={styles.dashMiningContainer}>
 
                 <div></div>
-
                 <div className={styles.dashMiningContent}>
 
                     {/* Mining Hardware Info */}
-                    <h1>Mining Hardware</h1>
+                    <div className={styles.miningPageHeader}>
+                        <h1>Mining Hardware</h1>
+                    </div>
 
                     {/* Hardware Block */}
                     {userHardwareData ?
@@ -104,7 +153,7 @@ export default function MiningTab() {
                                                 <span style={{ color: `${data.statusColor}` }}>Name: </span>{data.name}
                                             </h2>
                                             <h3>
-                                                <span style={{ color: `${data.statusColor}` }} >Blockchain: </span>{data.blockchain}
+                                                <span style={{ color: `${data.statusColor}` }} >Blockchain: </span>{data.blockchain.charAt(0).toUpperCase() + data.blockchain.slice(1)}
                                             </h3>
                                         </div>
 
@@ -156,6 +205,65 @@ export default function MiningTab() {
                         :
                         <div>Loading...</div>
                     }
+
+                    {/* Modal to add new hardware for the logged user */}
+                    <Popup
+                        trigger={<h2 className={styles.addHardwareTrigger}>+</h2>}
+                        position="center center"
+                        arrow={false}
+                        closeOnDocumentClick
+                        contentStyle={{
+                            backgroundColor: 'var(--Background-Color-Darker)',
+                            overflowY: 'scroll',
+                            padding: '1rem',
+                            borderRadius: '5px',
+                            textAlign: 'center',
+                            display: 'grid',
+                            fontSize: '1.2rem',
+                            color: 'var(--Main-White)',
+                            width: '100%',
+                            maxWidth: '80%',
+                            maxHeight: '90vh',
+                        }}
+                        overlayStyle={{
+                            backgroundColor: 'rgba(0,0,0,0.4)',
+                            padding: '1rem'
+                        }}
+                    >
+                        <h1>Add Hardware</h1>
+
+                        <form className={styles.formAddHardware} onSubmit={handleSubmit(addNewHardware)}>
+                            <label htmlFor="name">Name</label>
+                            <br />
+                            <input type="text" {...register('name')} required />
+
+                            <br />
+
+                            <label>GPU</label>
+                            <br />
+                            <select className={styles.selectOptionAddHardware} {...register('gpu')}>
+                                <option value="RTX 3090 24GB">RTX 3090 24GB</option>
+                                <option value="RTX 3080 10GB">RTX 3080 10GB</option>
+                                <option value="RTX 3070 TI 8GB">RTX 3070 TI 8GB</option>
+                                <option value="RTX 3060 12GB">RTX 3060 12GB</option>
+                                <option value="RTX 3050 8GB">RTX 3050 8GB</option>
+                            </select>
+
+                            <br />
+
+                            <label>Blockchain Network</label>
+                            <br />
+                            <select className={styles.selectOptionAddHardware} {...register('blockchain')}>
+                                <option value="bitcoin">Bitcoin</option>
+                                <option value="ethereum">Ethereum</option>
+                                <option value="monero">Monero</option>
+                            </select>
+
+                            <br />
+                            <button type="submit" className={styles.addHardwareBtn}>Add Hardware</button>
+                        </form>
+
+                    </Popup>
 
                 </div>
             </div>
