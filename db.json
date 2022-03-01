@@ -1,6 +1,7 @@
 {
   "users": [
     {
+      "id": 1,
       "name": "Rey",
       "login": "desertgirl@gmail.com",
       "hardwareMining": [
@@ -8,7 +9,7 @@
           "id": "81421391224",
           "name": "My GPU 1",
           "gpu": "RTX 3060 12GB",
-          "blockchain": "Bitcoin",
+          "blockchain": "bitcoin",
           "status": "online",
           "statusColor": "var(--Main-Green)",
           "gainsLast30Days": "0.00183040",
@@ -18,24 +19,45 @@
           "id": "31431984123",
           "name": "My GPU 2",
           "gpu": "GTX 1660 Super 6GB",
-          "blockchain": "Ethereum",
+          "blockchain": "ethereum",
           "status": "offline",
           "statusColor": "var(--Offline-Status)",
           "gainsLast30Days": "0.00183040",
           "color": "var(--Ethereum)"
+        },
+        {
+          "id": "14356433264",
+          "name": "Nova placa",
+          "gpu": "RTX 3090 24GB",
+          "blockchain": "bitcoin",
+          "status": "online",
+          "statusColor": "var(--Main-Green)",
+          "gainsLast30Days": "0",
+          "color": "var(--Bitcoin)"
+        },
+        {
+          "id": "45255464944",
+          "name": "Bandolero",
+          "gpu": "RTX 3050 8GB",
+          "blockchain": "monero",
+          "status": "offline",
+          "statusColor": "var(--Offline-Status)",
+          "gainsLast30Days": "0",
+          "color": "var(--Monero)"
         }
-      ],
-      "id": 1
+      ]
     },
     {
       "id": 2,
       "name": "Lucas Romero",
-      "login": "romero@gmail.com"
+      "login": "romero@gmail.com",
+      "hardwareMining": []
     },
     {
       "id": 3,
       "name": "Belo",
-      "login": "perfume@gmail.com"
+      "login": "perfume@gmail.com",
+      "hardwareMining": []
     }
   ]
 }
