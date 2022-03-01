@@ -18,10 +18,21 @@
     /* box-shadow: 0px 0px 8px -1px #000000; */
 }
 
-.dashMiningContent>h1 {
-    text-align: center;
-    font-size: 2rem;
+.miningPageHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2.5rem;
+}
+
+.miningPageHeader>h1 {
+    text-align: center;
+    font-size: 2.4rem;
+}
+
+.addHardwareTrigger {
+    font-size: 4rem;
+    text-align: center;
 }
 
 .hardwareBlock {
@@ -123,6 +134,46 @@
 .stopStartMiningBtn {
     place-self: end;
     margin-bottom: 1rem;
+}
+
+/* Form Add Hardware */
+.formAddHardware {
+    margin-top: 1rem;
+}
+
+.formAddHardware>label {
+    text-align: left;
+    font-size: 1.6rem;
+}
+
+.formAddHardware>input {
+    margin: 1rem 0;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 0;
+}
+
+.formAddHardware>select {
+    margin: 1rem 0;
+}
+
+.formAddHardware>input,
+.selectOptionAddHardware {
+    width: 75%;
+    padding: 1rem;
+}
+
+.addHardwareBtn {
+    width: 15rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: 0;
+
+    font-size: 1.6rem;
+
+    background-color: var(--Main-Green);
+    color: var(--Main-White);
 }
 
 @media (min-width: 1024px) {
