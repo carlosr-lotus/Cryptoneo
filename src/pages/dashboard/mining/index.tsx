@@ -209,7 +209,7 @@ export default function MiningTab() {
                     {/* Modal to add new hardware for the logged user */}
                     <Popup
                         trigger={<h2 className={styles.addHardwareTrigger}>+</h2>}
-                        position="center center"
+                        position="top center"
                         arrow={false}
                         closeOnDocumentClick
                         contentStyle={{
