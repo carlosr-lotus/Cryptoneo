@@ -26,16 +26,6 @@
           "color": "var(--Ethereum)"
         },
         {
-          "id": "14356433264",
-          "name": "Nova placa",
-          "gpu": "RTX 3090 24GB",
-          "blockchain": "bitcoin",
-          "status": "online",
-          "statusColor": "var(--Main-Green)",
-          "gainsLast30Days": "0",
-          "color": "var(--Bitcoin)"
-        },
-        {
           "id": "45255464944",
           "name": "Bandolero",
           "gpu": "RTX 3050 8GB",
@@ -45,19 +35,38 @@
           "gainsLast30Days": "0",
           "color": "var(--Monero)"
         }
-      ]
+      ],
+      "wallets": [
+        {
+          "id": 1,
+          "crypto": "bitcoin",
+          "cryptoColor": "var(--Bitcoin)",
+          "currentAmount": "0.00183040",
+          "currentAmountConverted": "80.01",
+          "cryptoDesc": "Bitcoin was created in 2008 by Satochi Nakamoto, with the promise to deliver peer-to-peer transactions."
+        }, 
+        {
+          "id": 2,
+          "crypto": "ethereum",
+          "cryptoColor": "var(--Ethereum)",
+          "currentAmount": "0.00892590",
+          "currentAmountConverted": "30.08",
+          "cryptoDesc": "Ethereum is a platform powered by blockchain technology that is best known for its native cryptocurrency, called ether, or ETH, or simply ethereum. The distributed nature of blockchain technology is what makes the Ethereum platform secure, and that security enables ETH to accrue value. "
+        }] 
     },
     {
       "id": 2,
       "name": "Lucas Romero",
       "login": "romero@gmail.com",
-      "hardwareMining": []
+      "hardwareMining": [],
+      "wallets": []
     },
     {
       "id": 3,
       "name": "Belo",
       "login": "perfume@gmail.com",
-      "hardwareMining": []
+      "hardwareMining": [],
+      "wallets": []
     }
   ]
 }
