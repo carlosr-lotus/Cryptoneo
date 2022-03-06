@@ -7,13 +7,16 @@
   --Background-Color: #181818;
   --Background-Color-Darker: #0A0A0A;
 
-  /* ** Secondary Colors ** */
+  /* Crypto Colors */
   --Bitcoin: #F7931A;
   --Ethereum: #F4F4F4;
   --Monero: #FF6600;
+
+  /* ** Secondary Colors ** */
   --CryptoBox-border: #707070;
   --DevelopedBy-Bg-Color: #3E3E3E;
   --Offline-Status: #D32E2E;
+  --Yellow: #FFE63A;
 
   /* Colors Supporters */
   --Binance: #f3ba2f;
@@ -57,4 +60,41 @@ button {
     sans-serif;
   border: none;
   cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar,
+::-moz-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* border-radius: 10px; */
+  padding: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  height: 5px;
+  width: 5px;
+  padding: 0 3px;
+  background: #888;
+  border-radius: 10px;
+
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+
+  padding: 0 3px;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  background-clip: padding-box;
 }
