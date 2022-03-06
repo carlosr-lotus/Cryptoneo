@@ -40,6 +40,7 @@
         {
           "id": 1,
           "crypto": "bitcoin",
+          "acronym": "BTC",
           "cryptoColor": "var(--Bitcoin)",
           "currentAmount": "0.00183040",
           "currentAmountConverted": "80.01",
@@ -48,6 +49,7 @@
         {
           "id": 2,
           "crypto": "ethereum",
+          "acronym": "ETH",
           "cryptoColor": "var(--Ethereum)",
           "currentAmount": "0.00892590",
           "currentAmountConverted": "30.08",
