@@ -203,21 +203,18 @@
         grid-template-columns: 1fr;
     }
 
-    .dashMiningContent>h1 {
+    .miningPageHeader>h1 {
         font-size: 3rem;
     }
 
     .hardwareBlock {
+        width: 80rem;
         grid-template-columns: 4rem 1fr;
     }
 
     .hardwareDetails {
         width: 50%;
         font-size: 1.4rem;
-    }
-
-    .hardwareBlock {
-        width: 80rem;
     }
 
     .mobileStatusBall {

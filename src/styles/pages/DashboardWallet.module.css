@@ -40,6 +40,13 @@
     grid-template-columns: 4rem 1fr;
 
     cursor: pointer;
+    /* box-shadow: 0 0 15px #ffee10; */
+    transition: .3s;
+}
+
+.walletBlock:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--Main-Green);
 }
 
 .walletBlock>svg {
@@ -97,6 +104,139 @@
     animation: fadein 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
 
+/* Popup with Wallet Content */
+.popupWalletTopContent {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    padding-bottom: 1rem;
+
+    border-bottom: .1rem solid var(--CryptoBox-border);
+}
+
+.popupWalletTopContent>svg {
+    place-self: center;
+}
+
+.popupWalletTopContent>div:nth-child(2) {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.popupWalletTopContent>div:nth-child(2)>h1 {
+    text-align: left;
+    font-size: 1.6rem;
+}
+
+.popupWalletTopContent>div:nth-child(2)>div {
+    display: flex;
+}
+
+.popupWalletTopContent>div:nth-child(2)>div {
+    font-size: 1.4rem;
+}
+
+.popupWalletTopContent>div:nth-child(2)>div>span {
+    color: grey;
+    margin-left: .5rem;
+}
+
+.popupWalletBtns {
+    margin-top: 1rem;
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    place-self: center;
+}
+
+.receiveWalletBtn,
+.sendWalletBtn {
+    margin: 0 .2rem;
+    padding: .2rem 1.5rem;
+    border-radius: .5rem;
+    font-size: 1.6rem;
+}
+
+.sendWalletBtn {
+    background-color: var(--Main-Green);
+    color: var(--Main-White);
+}
+
+.popupWalletMainContent {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.popupWalletMainBlockHistory,
+.popupWalletMainBlockPrice,
+.popupWalletMainBlockDesc {
+    padding: 1rem;
+    background-color: var(--Background-Color);
+    border-radius: 1rem;
+}
+
+.popupWalletMainBlockPrice>h3 {
+    font-size: 1.7rem;
+}
+
+.popupWalletMainBlockPrice>h3>span:nth-child(1) {
+    color: var(--Main-Green);
+}
+
+.popupWalletMainBlockPrice>h3>span:nth-child(2) {
+    color: grey;
+    font-size: 1.2rem;
+}
+
+.popupWalletMainBlockHistory {
+    max-height: 15.8rem;
+    overflow-y: scroll;
+}
+
+.popupWalletMainBlockHistory>div {
+    word-wrap: break-word;
+}
+
+.popupWalletMainBlockHistory>h2,
+.popupWalletMainBlockHistory>div {
+    text-align: left;
+    font-size: 1.5rem;
+
+    border-bottom: 1px solid var(--CryptoBox-border);
+}
+
+.popupWalletMainBlockHistory>div>p>span:nth-child(2) {
+    color: grey;
+}
+
+.popupWalletMainBlockHistory>h2 {
+    margin-bottom: .7rem;
+
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.popupWalletMainBlockDesc {
+    overflow-y: scroll;
+    max-height: 7rem;
+    padding: 1rem;
+    font-size: 1.4rem;
+    text-align: left;
+    line-height: 2.3rem;
+}
+
+/* Sent Crypto Modal */
+.modalSentBtn {
+    margin-top: 1rem;
+    background-color: var(--Main-Green);
+    color: var(--Main-White);
+}
+
+.generateWalletSelect {
+    margin-top: 1rem;
+    padding: 1.2rem;
+}
+
 @media (min-width: 1024px) {
     .dashWalletContainer {
         height: 100vh;
@@ -124,4 +264,41 @@
 
         font-size: 1.4rem;
     }
+
+    .popupWalletTopContent {
+        grid-template-columns: 4rem 1fr 1fr;
+    }
+
+    .popupWalletTopContent>svg {
+        width: 60;
+        height: 60;
+
+    }
+
+    .popupWalletBtns {
+        margin-top: 0;
+        grid-row: 1;
+        grid-column: 3;
+        place-self: end;
+        align-self: center;
+    }
+
+    .receiveWalletBtn,
+    .sendWalletBtn {
+        font-size: 1.6rem;
+    }
+
+    .popupWalletMainContent {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .popupWalletMainBlockHistory {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+
+    /* .popupWalletContainer {
+        max-width: 40rem;
+    } */
 }
