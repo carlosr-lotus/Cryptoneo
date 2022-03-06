@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 
 interface walletDataModal {
     crypto: string,
+    acronym: string,
     cryptoColor: string,
     currentAmount: string,
     currentAmountConverted: string,
@@ -27,7 +28,12 @@ export default function WalletTab() {
     const [walletData, setWalletData] = useState([]);
     const [walletDataPopup, setWalletDataPopup] = useState<walletDataModal>();
     const [open, setOpen] = useState(false);
+    const [openReceive, setOpenReceive] = useState(false);
+    const [openSend, setOpenSend] = useState(false);
+
     const closeModal = () => setOpen(false);
+    const closeModalReceive = () => setOpenReceive(false);
+    const closeModalSend = () => setOpenSend(false);
 
     // const { query } = useRouter();
     // console.log(query);
@@ -66,6 +72,7 @@ export default function WalletTab() {
         }
     }
 
+
     return (
         <>
             <Head>
@@ -87,11 +94,15 @@ export default function WalletTab() {
                         {walletData ?
                             walletData.map((data, index) => {
                                 return (
-                                    <div className={styles.walletBlock} key={index} onClick={() => returnWalletModal(data)}>
+                                    <div
+                                        className={styles.walletBlock}
+                                        key={index}
+                                        onClick={() => returnWalletModal(data)}
+                                    >
                                         {returnCryptoIcon(data.crypto, data.cryptoColor)}
 
                                         <div className={styles.walletDetails}>
-                                            <h2>{data.crypto.charAt(0).toUpperCase() + data.crypto.slice(1)}</h2>
+                                            <h2>{data.crypto.charAt(0).toUpperCase() + data.crypto.slice(1)} ({data.acronym})</h2>
 
                                             <div>
                                                 <p>{data.currentAmount}</p>
@@ -107,41 +118,165 @@ export default function WalletTab() {
                     </div>
 
                     {/* Popup with wallet details */}
+                    {walletDataPopup ?
+                        <Popup
+                            open={open}
+                            onClose={closeModal}
+                            position="top center"
+                            arrow={false}
+                            // closeOnDocumentClick
+                            contentStyle={{
+                                backgroundColor: 'var(--Background-Color-Darker)',
+                                overflowY: 'scroll',
+                                padding: '2rem',
+                                borderRadius: '5px',
+                                textAlign: 'center',
+                                display: 'grid',
+                                fontSize: '1.2rem',
+                                color: 'var(--Main-White)',
+                                width: '100%',
+                                maxWidth: '50rem',
+                                maxHeight: '90vh',
+                                overflow: 'auto'
+                            }}
+                            overlayStyle={{
+                                backgroundColor: 'rgba(0,0,0,0.4)',
+                                padding: '1rem'
+                            }}
+                        >
+                            <div className={styles.popupWalletContainer}>
+
+                                <div className={styles.popupWalletTopContent}>
+                                    {returnCryptoIcon(walletDataPopup.crypto, walletDataPopup.cryptoColor)}
+
+                                    <div>
+                                        <h1>{walletDataPopup.crypto.charAt(0).toUpperCase() + walletDataPopup.crypto.slice(1)} ({walletDataPopup.acronym}) </h1>
+                                        <div>
+                                            <p>{walletDataPopup.currentAmount}</p>
+                                            <span>$ {walletDataPopup.currentAmountConverted} USD</span>
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.popupWalletBtns}>
+                                        <button onClick={() => setOpenReceive(o => !o)} className={styles.receiveWalletBtn}>Receive</button>
+                                        <button className={styles.sendWalletBtn} onClick={() => setOpenSend(o => !o)}>Send</button>
+                                    </div>
+                                </div>
+
+                                <div className={styles.popupWalletMainContent}>
+
+                                    {/* Crypto Current Price */}
+                                    <div className={styles.popupWalletMainBlockPrice}>
+                                        <h2>{walletDataPopup.crypto.charAt(0).toUpperCase() + walletDataPopup.crypto.slice(1)} Current Value</h2>
+                                        <h3>1 {walletDataPopup.acronym} = $<span>42276.88 </span><span>USD</span></h3>
+                                    </div>
+
+                                    {/* Wallet Transfer History */}
+                                    <div className={styles.popupWalletMainBlockHistory}>
+                                        <h2>History</h2>
+
+                                        <div>
+                                            <p>
+                                                <span style={{ color: 'var(--Yellow)' }}>Received</span> 0.0001 <span>$ 4.03 USD</span>
+                                            </p>
+
+                                            <p>Mining Fee</p>
+                                        </div>
+
+                                        <div>
+                                            <p>
+                                                <span style={{ color: 'var(--Main-Green)' }}>Sent</span> 0.00093120 <span>$ 40.01 USD</span>
+                                            </p>
+
+                                            <p>Receiver address: miEfU8FsvLGgzQpQUYLtB6rPLHwn9YG56w</p>
+                                        </div>
+
+                                        <div>
+                                            <p>
+                                                <span style={{ color: 'var(--Yellow)' }}>Received</span> 0.0001 <span>$ 4.03 USD</span>
+                                            </p>
+
+                                            <p>Mining Fee</p>
+                                        </div>
+
+
+                                    </div>
+
+                                    {/* Crypto Description */}
+                                    <div className={styles.popupWalletMainBlockDesc}>
+                                        <p>{walletDataPopup.cryptoDesc}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </Popup>
+                        :
+                        null
+                    }
+
+                    {/* Receive Crypto Modal */}
                     <Popup
-                        open={open}
-                        onClose={closeModal}
+                        open={openReceive}
+                        onClose={closeModalReceive}
                         position="top center"
                         arrow={false}
                         closeOnDocumentClick
                         contentStyle={{
                             backgroundColor: 'var(--Background-Color-Darker)',
                             overflowY: 'scroll',
-                            padding: '1rem',
+                            padding: '2rem',
                             borderRadius: '5px',
                             textAlign: 'center',
                             display: 'grid',
-                            fontSize: '1.2rem',
+                            fontSize: '1.6rem',
                             color: 'var(--Main-White)',
                             width: '100%',
-                            maxWidth: '80%',
+                            maxWidth: '50rem',
                             maxHeight: '90vh',
+                            overflow: 'auto'
                         }}
                         overlayStyle={{
                             backgroundColor: 'rgba(0,0,0,0.4)',
                             padding: '1rem'
                         }}
                     >
-                        <div className={styles.popupWalletContainer}>
-                            <h1>Bitcoin!</h1>
+                        <p>Your address:</p>
+                        <p>miEfU8FsvLGgzQpQUYLtB6rPLHwn9YG56w</p>
+                    </Popup>
 
-                            <div>
-                                <p>0.00183040</p>
-                                <span>$ 80.01 USD</span>
-                            </div>
+                    {/* Send Crypto Modal */}
+                    <Popup
+                        open={openSend}
+                        onClose={closeModalSend}
+                        position="top center"
+                        arrow={false}
+                        closeOnDocumentClick
+                        contentStyle={{
+                            backgroundColor: 'var(--Background-Color-Darker)',
+                            overflowY: 'scroll',
+                            padding: '2rem',
+                            borderRadius: '5px',
+                            textAlign: 'center',
+                            display: 'grid',
+                            fontSize: '1.6rem',
+                            color: 'var(--Main-White)',
+                            width: '100%',
+                            maxWidth: '50rem',
+                            maxHeight: '90vh',
+                            overflow: 'auto'
+                        }}
+                        overlayStyle={{
+                            backgroundColor: 'rgba(0,0,0,0.4)',
+                            padding: '1rem'
+                        }}
+                    >
+                        <p>Receiver address: </p>
+                        <input type="text"></input>
 
-                            <button>Receive</button>
-                            <button>Send</button>
-                        </div>
+                        <p>Amount: </p>
+                        <input type="text"></input>
+
+                        <button className={styles.modalSentBtn}>Send Crypto</button>
                     </Popup>
 
 
@@ -162,11 +297,8 @@ export default function WalletTab() {
                             fontSize: '1.2rem',
                             color: 'var(--Main-White)',
                             width: '100%',
-                            maxWidth: '80%',
+                            maxWidth: '50rem',
                             maxHeight: '90vh',
-                            // webkitTransition: '0.25s all ease-in-out',
-                            // mozTransition: '0.25s all ease-in-out',
-                            // oTransition: '0.25s all ease-in-out',
                             transition: '0.25s all ease-in-out',
                         }}
                         overlayStyle={{
@@ -174,11 +306,12 @@ export default function WalletTab() {
                             padding: '1rem'
                         }}
                     >
-                        <h1>Add Wallet</h1>
-                        <h1>Hello there!</h1>
-                        <h1>Hello there!</h1>
-                        <h1>Hello there!</h1>
-                        <h1>Hello there!</h1>
+                        <h1>Generate Wallet</h1>
+                        <select className={styles.generateWalletSelect}>
+                            <option>Monero</option>
+                            <option>Bitcoin</option>
+                            <option>Ethereum</option>
+                        </select>
                     </Popup>
                 </div>
             </div>
